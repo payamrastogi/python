@@ -1,0 +1,203 @@
+python interpreter prompt
+python is case sensitive
+#comments are useful for the reader of the program # Code tells you how, comments should tell you why.
+Numbers are mainly of two types - integers and floats.
+There is no separate long type. The int type can be an integer of any size.
+You can specify multi-line strings using triple quotes - (""" or '''). You can use single quotes and double quotes freely within the triple quotes.
+Strings Are Immutable
+Python starts counting from 0 which means that first position is at index 0, second position is at index 1, and so on.
+For example:
+age = 20
+name = 'Swaroop'
+print '{0} was {1} years old when he wrote this book'.format(name, age)
+
+Also note that the numbers are optional, so you could have also written as:
+age = 20
+name = 'Swaroop'
+print '{} was {} years old when he wrote this book'.format(name, age)
+
+note that print always ends with an invisible "new line" character (\n) so that repeated calls to print will all print on a separate line each
+One thing to note is that in a string, a single backslash at the end of the line indicates that the string is continued in the next line, but no newline is added.
+
+"This is the first sentence. \
+This is the second sentence."
+is equivalent to
+"This is the first sentence. This is the second sentence."
+
+If you need to specify some strings where no special processing such as escape sequences are handled, then what you need is to specify a raw string by prefixing r or R to the string. An example is:
+for example
+r"Newlines are indicated by \n"
+
+Python refers to anything used in a program as an object
+Python is strongly object-oriented in the sense that everything is an object including numbers, strings and functions.
+
+Variables are used by just assigning them a value. No declaration or data type definition is needed/used.
+
+If you want to specify more than one logical line on a single physical line, then you have to explicitly specify this using a semicolon (;) which indicates the end of a logical line/statement. 
+For example:
+-----------------------
+i = 5
+print i
+is effectively same as
+
+i = 5;
+print i;
+which is also same as
+
+i = 5; print i;
+and same as
+
+i = 5; print i
+
+------------------------
+
+print \
+i
+is the same as
+
+print i
+------------------------
+
+Leading whitespace (spaces and tabs) at the beginning of the logical line is used to determine the indentation level of the logical line, which in turn is used to determine the grouping of statements.
+
+2 * 3 gives 6. 'la' * 3 gives 'lalala'.
+3 ** 4 gives 81 (i.e. 3 * 3 * 3 * 3)
+2 << 2 gives 8. 2 is represented by 10 in bits.
+11 >> 1 gives 5.
+bitwise and
+5 & 3 gives 1.
+bitwaise or
+5 | 3 gives 7
+bitwise xor
+5 ^ 3 gives 6
+(bit-wise invert)
+~5 gives -6
+
+a colon at the end - we are indicating to Python that a block of statements follows
+
+There is no switch statement in Python. You can use an if..elif..else statement to do the same thing
+
+Remember that you can have an else clause for the while loop.-The else block is executed when the while loop condition becomes False
+
+Remember that the else part is optional in for loop. When included, it is always executed once after the for loop is over unless a break statement is encountered.
+
+An important note is that if you break out of a for or while loop, any corresponding loop else block is not executed.
+
+the names given in the function definition are called parameters whereas the values you supply in the function call are called arguments.
+
+All variables have the scope of the block they are declared in starting from the point of definition of the name.
+
+Only those parameters which are at the end of the parameter list can be given default argument values i.e. you cannot have a parameter with a default argument value preceding a parameter without a default argument value in the function’s parameter list.
+
+This is because the values are assigned to the parameters by position. For example,def func(a, b=5) is valid, but def func(a=5, b) is not valid.
+--------------------------------------------------
+def func(a, b=5, c=10):
+    print 'a is', a, 'and b is', b, 'and c is', c
+
+func(3, 7)
+func(25, c=24)
+func(c=50, a=100)
+---------------------------------------------------
+
+When we declare a starred parameter such as *param, then all the positional arguments from that point till the end are collected as a tuple called param.
+
+Similarly, when we declare a double-starred parameter such as **param, then all the keyword arguments from that point till the end are collected as a dictionary called param.
+
+The pass statement is used in Python to indicate an empty block of statements.
+def some_function():
+    pass
+	
+Note that a return statement without a value is equivalent to return None. None is a special type in Python that represents nothingness. 
+
+A string on the first logical line of a function is the docstring for that function. Note that DocStrings also apply to modules and classes which we will learn about in the respective chapters.
+
+We can access the docstring of the print_max function using the __doc__ (notice the double underscores) attribute (name belonging to) of the function. 
+If you have used help() in Python, then you have already seen the usage of docstrings! What it does is just fetch the __doc__ attribute of that function and displays it in a neat manner for you.
+
+the pydoc command that comes with your Python distribution works similarly to help() using docstrings.
+
+Note that the initialization is done only the first time that we import a module.
+
+Remember, the name of the script running is always the first argument in the sys.argv list. So, in this case we will have 'module_using_sys.py' as sys.argv[0], 'we' as sys.argv[1], 'are' as sys.argv[2] and 'arguments' as sys.argv[3]. Notice that Python starts counting from 0 and not 1.
+
+These .pyc files are usually created in the same directory as the corresponding .py files. If Python does not have permission to write to files in that directory, then the .pyc files will not be created.
+
+Importing a module is a relatively costly affair, so Python does some tricks to make it faster. One way is to create byte-compiled files with the extension .pyc which is an intermediate form that Python transforms the program into (remember the introduction section on how Python works?). 
+
+Every Python module has its __name__ defined. If this is '__main__', that implies that the module is being run standalone by the user and we can take appropriate actions.
+
+if __name__ == '__main__':
+    print 'This program is being run by itself'
+else:
+    print 'I am being imported from another module'
+	
+-----------------------------------------------	
+You could also use:
+
+from mymodule import *
+This will import all public names such as say_hi but would not import __version__ because it starts with double underscores.
+-----------------------------------------------
+
+You can use the built-in dir function to list the identifiers that an object defines.
+
+Packages are just folders of modules with a special __init__.py file that indicates to Python that this folder is special because it contains Python modules.
+
+There are four built-in data structures in Python - list, tuple, dictionary and set. 
+
+The list of items should be enclosed in square brackets so that Python understands that you are specifying a list. Once you have created a list, you can add, remove or search for items in the list. Since we can add and remove items, we say that a list is a mutable data type i.e. this type can be altered.
+
+Python provides an append method for the list class which allows you to add an item to the end of the list. 
+
+Think of the comma as telling Python that we have more items to print on the same line.
+
+One major feature of tuples is that they are immutable like strings i.e. you cannot modify tuples.
+
+An empty tuple is constructed by an empty pair of parentheses such as myempty = (). However, a tuple with a single item is not so simple. You have to specify it using a comma following the first (and only) item so that Python can differentiate between a tuple and a pair of parentheses surrounding the object in an expression i.e. you have to specify singleton = (2 , ) if you mean you want a tuple containing the item 2.
+
+
+Note that you can use only immutable objects (like strings) for the keys of a dictionary but you can use either immutable or mutable objects for the values of the dictionary.
+
+Pairs of keys and values are specified in a dictionary by using the notation d = {key1 : value1, key2 : value2 }.
+Remember that key-value pairs in a dictionary are not ordered in any manner. 
+
+
+Lists, tuples and strings are examples of sequences, but what are sequences and what is so special about them?
+The major features are membership tests, (i.e. the in and not in expressions) and indexing operations, which allow us to fetch a particular item in the sequence directly.
+The three types of sequences mentioned above - lists, tuples and strings, also have a slicing operation which allows us to retrieve a slice of the sequence i.e. a part of the sequence.
+
+
+The index can also be a negative number, in which case, the position is calculated from the end of the sequence.
+If the first number is not specified, Python will start at the beginning of the sequence
+You can also provide a third argument for the slice, which is the step for the slicing (by default, the step size is 1):
+
+>>> shoplist = ['apple', 'mango', 'carrot', 'banana']
+>>> shoplist[::1]
+['apple', 'mango', 'carrot', 'banana']
+>>> shoplist[::2]
+['apple', 'carrot']
+>>> shoplist[::3]
+['apple', 'banana']
+>>> shoplist[::-1]
+['banana', 'carrot', 'mango', 'apple']
+
+Notice that when the step is 2, we get the items with position 0, 2,… When the step size is 3, we get the items with position 0, 3, etc.
+
+
+Sets are unordered collections of simple objects. These are used when the existence of an object in a collection is more important than the order or how many times it occurs.
+
+A module is simply a file containing Python code. This code can be in the form of Python classes, functions, or just a list of names. 
+
+Whenever you run a simple Python script, the interpreter treats it as module called __main__, which gets its own namespace. The builtin functions that you would use also live in a module called __builtin__ and have their own namespace.
+
+A namespace, is obviously enough, a space that holds a bunch of names.
+A scope refers to a region of a program from where a namespace can be accessed without a prefix
+
+Classes and namespaces have special interactions. The only way for a class’ methods to access it’s own variables or functions (as names) is to use a reference to itself. This means that the first argument of a method must be a ‘self’ parameter, if it to access other class attributes.
+You can define multiple classes in the same module (and hence the same namespace) and have them share some global data
+
+
+The execution of a function introduces a new symbol table used for the local variables of the function. More precisely, all variable assignments in a function store the value in the local symbol table; whereas variable references first look in the local symbol table, then in the local symbol tables of enclosing functions, then in the global symbol table, and finally in the table of built-in names. Thus, global variables cannot be directly assigned a value within a function (unless named in a global statement), although they may be referenced.
+
+The actual parameters (arguments) to a function call are introduced in the local symbol table of the called function when it is called; thus, arguments are passed using call by value (where the value is always an object reference, not the value of the object). [1] When a function calls another function, a new local symbol table is created for that call.
+
+A function definition introduces the function name in the current symbol table. The value of the function name has a type that is recognized by the interpreter as a user-defined function. This value can be assigned to another name which can then also be used as a function. This serves as a general renaming mechanism: 
