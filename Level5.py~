@@ -1,0 +1,5 @@
+import pickle
+file_object = open("/media/payam/Application/python/Level5.txt", 'r')
+str = pickle.load(file_object)
+arr = str.split("[*]")
+print arr
